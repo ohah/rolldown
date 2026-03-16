@@ -244,6 +244,7 @@ pub fn render_chunk_exports(
             "Object.keys(",binding_ref_name, ").forEach(function (k) {\n",
             "  if (k !== 'default' && !Object.prototype.hasOwnProperty.call(exports, k)) Object.defineProperty(exports, k, {\n",
             "    enumerable: true,\n",
+            "    configurable: true,\n",
             "    get: function () { return ",binding_ref_name,"[k]; }\n",
             "  });\n",
             "});\n"
@@ -301,6 +302,7 @@ pub fn render_object_define_property(key: &str, value: &str) -> String {
     key,
     "', {
   enumerable: true,
+  configurable: true,
   get: function () {
     return ",
     value,
@@ -317,6 +319,7 @@ pub fn render_object_define_property_value(key: &str, value: &str) -> String {
     key,
     "', {
   enumerable: true,
+  configurable: true,
   value: ",
     value,
     "

@@ -22,10 +22,10 @@ export var __commonJSMin = (cb, mod) => () => (
 export var __exportAll = (all, no_symbols) => {
   let target = {};
   for (var name in all) {
-    __defProp(target, name, { get: all[name], enumerable: true });
+    __defProp(target, name, { get: all[name], enumerable: true, configurable: true });
   }
   if (!no_symbols) {
-    __defProp(target, Symbol.toStringTag, { value: 'Module' });
+    __defProp(target, Symbol.toStringTag, { value: 'Module', configurable: true });
   }
   return target;
 };
@@ -37,6 +37,7 @@ export var __copyProps = (to, from, except, desc) => {
         __defProp(to, key, {
           get: ((k) => from[k]).bind(null, key),
           enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable,
+          configurable: true,
         });
       }
     }
@@ -50,7 +51,7 @@ export var __toESM = (mod, isNodeMode, target) => (
   (target = mod != null ? __create(__getProtoOf(mod)) : {}),
   __copyProps(
     isNodeMode || !mod || !mod.__esModule
-      ? __defProp(target, 'default', { value: mod, enumerable: true })
+      ? __defProp(target, 'default', { value: mod, enumerable: true, configurable: true })
       : target,
     mod,
   )
@@ -58,7 +59,7 @@ export var __toESM = (mod, isNodeMode, target) => (
 export var __toCommonJS = (mod) =>
   __hasOwnProp.call(mod, 'module.exports')
     ? mod['module.exports']
-    : __copyProps(__defProp({}, '__esModule', { value: true }), mod);
+    : __copyProps(__defProp({}, '__esModule', { value: true, configurable: true }), mod);
 export var __toBinaryNode = (base64) => new Uint8Array(Buffer.from(base64, 'base64'));
 export var __toBinary = /* @__PURE__ */ (() => {
   var table = new Uint8Array(128);

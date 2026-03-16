@@ -25,12 +25,12 @@ pub fn render_namespace_markers(
 
   if es_module && use_symbols {
     Some(
-      "Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });",
+      "Object.defineProperties(exports, { __esModule: { value: true, configurable: true }, [Symbol.toStringTag]: { value: 'Module', configurable: true } });",
     )
   } else if es_module {
-    Some("Object.defineProperty(exports, '__esModule', { value: true });")
+    Some("Object.defineProperty(exports, '__esModule', { value: true, configurable: true });")
   } else if use_symbols {
-    Some("Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });")
+    Some("Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module', configurable: true });")
   } else {
     None
   }
